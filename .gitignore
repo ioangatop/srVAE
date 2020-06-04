@@ -1,3 +1,13 @@
+# Ignore data and log folders
+/data
+!/data/**/*.gitkeep
+
+/logs
+!/logs/**/*.gitkeep
+
+/images
+!/images/**/*.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
