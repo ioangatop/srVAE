@@ -1,7 +1,7 @@
 # VAE and Super-Resolution VAE in PyTorch
 [![Python 3.6](https://img.shields.io/badge/Python-3.6-3776AB.svg?logo=python)](https://www.python.org/) [![PyTorch 1.3](https://img.shields.io/badge/PyTorch-1.3-EE4C2C.svg?logo=pytorch)](https://pytorch.org/docs/1.3.0/) [![MIT](https://img.shields.io/badge/License-MIT-3DA639.svg?logo=open-source-initiative)](LICENSE)
 
-Code release for [Super-Resolution Variational Auto-Encoders](url)
+Code release for [Super-Resolution Variational Auto-Encoders](https://arxiv.org/abs/2006.05218)
 
 <p align="center">
   <img src="readme_imgs/model_graphs.png" width="500"/>
@@ -138,11 +138,13 @@ python main.py --model srVAE --network densenet16x32 --prior RealNVP
 ## Cite
 Please cite our paper if you use this code in your own work:
 ```
-@inproceedings{gatopoulos2020srvae,
-  title={Super-resolution VAEs},
-  author={Gatopoulos, Ioannis and Stol, Maarten and Tomczak, Jakub},
-  booktitle={},
-  year={2020}
+@misc{gatopoulos2020superresolution,
+    title={Super-resolution Variational Auto-Encoders},
+    author={Ioannis Gatopoulos and Maarten Stol and Jakub M. Tomczak},
+    year={2020},
+    eprint={2006.05218},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
 }
 ```
 
