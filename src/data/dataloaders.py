@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler
 
 from src.utils import args
-from .datasets import *
+from .datasets import CIFAR10, CelebA, Imagenette, ImageNet32, ImageNet64
 
 
 ROOT = './data_root/'
