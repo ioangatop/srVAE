@@ -10,7 +10,7 @@ from torchvision import datasets
 from .args import args
 
 
-ROOT = './data/'
+ROOT = './data_root/'
 
 
 # ----- Dataset Splitter -----

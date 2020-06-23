@@ -84,6 +84,9 @@ def load_and_evaluate(dataset, model, writer=None):
 # ----- main -----
 
 def main():
+    # Print configs
+    print_args(args)
+
     # Control random seeds
     fix_random_seed(seed=args.seed)
 

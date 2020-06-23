@@ -1,16 +1,6 @@
 import torch
 import argparse
 
-
-# ----- Print Parser -----
-
-def print_args(ARGS):
-    print('\n'+26*'='+' Configuration '+26*'=')
-    for name, var in vars(ARGS).items():
-        print('{} : {}'.format(name, var))
-    print('\n'+25*'='+' Training Starts '+25*'='+'\n')
-
-
 # ----- Parser -----
 
 def parser():
@@ -18,8 +8,10 @@ def parser():
 
     # Dataset
     PARSER.add_argument('--dataset', default='CIFAR10', type=str,
-                        choices=['CIFAR10'],
+                        choices=['CIFAR10', 'CelebA', 'Imagenette', 'ImageNet32', 'ImageNet64'],
                         help="Data to be used.")
+    PARSER.add_argument('--img_resolution', default=32, type=int,
+                        help="Change image resolution (when possible).")
 
     # Model
     PARSER.add_argument('--model', default='VAE', type=str,
@@ -78,9 +70,6 @@ def parser():
     # Check device
     if ARGS.device is None:
         ARGS.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-    # Print configs
-    print_args(ARGS)
 
     return ARGS
 
