@@ -82,9 +82,9 @@ def dataloader(dataset=args.dataset, data_root=ROOT, batch_size=args.batch_size,
     train_transform, valid_transform = data_transformations(dataset)
 
     # build datasets
-    train_data = getattr(datasets, dataset)(train=True,  transform=train_transform, **dataset_kwargs)
-    valid_data = getattr(datasets, dataset)(train=True,  transform=valid_transform, **dataset_kwargs)
-    test_data  = getattr(datasets, dataset)(train=False, transform=valid_transform, **dataset_kwargs)
+    train_data = globals()[dataset](train=True,  transform=train_transform, **dataset_kwargs)
+    valid_data = globals()[dataset](train=True,  transform=valid_transform, **dataset_kwargs)
+    test_data  = globals()[dataset](train=False, transform=valid_transform, **dataset_kwargs)
 
     # define samplers for obtaining training and validation batches
     train_sampler, valid_sampler = get_samplers(len(train_data), 0.15)
