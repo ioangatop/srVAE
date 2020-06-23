@@ -7,6 +7,7 @@ from PIL import Image
 from torch.utils.data import Dataset
 
 # pytorch datasets
+import torchvision
 from torchvision.datasets import CIFAR10
 
 

@@ -14,7 +14,7 @@ from src.utils import args
 # Modified vertion of: https://github.com/divymurli/VAEs
 
 class MixtureOfGaussians(Prior):
-    def __init__(self, z_shape, num_mixtures=10):
+    def __init__(self, z_shape, num_mixtures=1000):
         super().__init__()
         self.z_shape = z_shape
         self.z_dim = np.prod(z_shape)

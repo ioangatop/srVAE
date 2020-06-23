@@ -10,7 +10,7 @@ def parser():
     PARSER.add_argument('--dataset', default='CIFAR10', type=str,
                         choices=['CIFAR10', 'CelebA', 'Imagenette', 'ImageNet32', 'ImageNet64'],
                         help="Data to be used.")
-    PARSER.add_argument('--img_resize', default=32, type=32,
+    PARSER.add_argument('--img_resize', default=32, type=int,
                         help='Change image resolution.')
 
     # Model
@@ -22,7 +22,7 @@ def parser():
                         help="Neural Network architecture to be used.")
 
     # Prior
-    PARSER.add_argument('--prior', default='RealNVP', type=str,
+    PARSER.add_argument('--prior', default='MixtureOfGaussians', type=str,
                         choices=['StandardNormal', 'MixtureOfGaussians', 'RealNVP'],
                         help='Prior type.')
     PARSER.add_argument('--z_dim', default=1024, type=int,
@@ -38,7 +38,7 @@ def parser():
                         help="Number of Importance Weighting samples used for approximating the test log-likelihood.")
 
     # Training Parameters
-    PARSER.add_argument('--batch_size', default=64, type=int,
+    PARSER.add_argument('--batch_size', default=32, type=int,
                         help='Batch size.')
     PARSER.add_argument('--epochs', default=2000, type=int,
                         help='Number of training epochs.')

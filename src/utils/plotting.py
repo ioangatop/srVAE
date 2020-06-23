@@ -154,7 +154,7 @@ def interpolation(model, dataloader, n_samples, epoch=0, writer=None):
             writer.add_image('image_completion/x_rec', make_grid(x_hat, nrow=n_rows, normalize=TF_NORMALIZE), epoch)
             writer.add_image('image_completion/x', make_grid(x_img, nrow=n_rows, normalize=TF_NORMALIZE), epoch)
         else:
-            save_image(make_grid(x_hat, nrow=n_samples, normalize=JPG_NORMALIZE), 'image_interpolation.jpg')
+            save_image(make_grid(x_hat, nrow=n_samples, normalize=JPG_NORMALIZE), 'images/image_interpolation.jpg')
 
     elif models_name in ['TwoStagedVAE']:
         q_u = model.module.q_u if isinstance(model, nn.DataParallel) else model.q_u
@@ -188,7 +188,7 @@ def interpolation(model, dataloader, n_samples, epoch=0, writer=None):
         if writer:
             writer.add_image('image_completion/x_rec', make_grid(x_hat, nrow=n_rows, normalize=TF_NORMALIZE), epoch)
         else:
-            save_image(make_grid(x_hat, nrow=n_samples, normalize=JPG_NORMALIZE), 'u_image_interpolation.jpg')
+            save_image(make_grid(x_hat, nrow=n_samples, normalize=JPG_NORMALIZE), 'images/image_interpolation.jpg')
     else:
         pass
 

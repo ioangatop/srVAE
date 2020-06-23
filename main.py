@@ -64,12 +64,12 @@ def load_and_evaluate(dataset, model, writer=None):
         quit()
     model = nn.DataParallel(model).to(args.device)
     model.eval()
-
-    # Evaluation of the model
-    # --- calculate nll ---
     criterion = ELBOLoss()
-    bpd = calculate_nll(model, test_loader, criterion, args, iw_samples=args.iw_test)
-    print('NLL with {} weighted samples: {:4.2f}'.format(args.iw_test, bpd))
+    
+    # Evaluation of the model
+    # --- calculate elbo ---
+    test_losses = evaluate(model, criterion, test_loader)
+    print('ELBO: {} bpd'.format(test_losses['bpd']))
 
     # --- image generation ---
     generate(model, n_samples=15*15)
@@ -79,6 +79,10 @@ def load_and_evaluate(dataset, model, writer=None):
 
     # --- image interpolation ---
     interpolation(model, test_loader, n_samples=15)
+
+    # --- calculate nll ---
+    bpd = calculate_nll(model, test_loader, criterion, args, iw_samples=args.iw_test)
+    print('NLL with {} weighted samples: {:4.2f}'.format(args.iw_test, bpd))
 
 
 # ----- main -----
