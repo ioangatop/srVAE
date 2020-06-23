@@ -5,9 +5,9 @@ import numpy as np
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler
-from torchvision import datasets
 
-from .args import args
+from src.utils import args
+from .datasets import *
 
 
 ROOT = './data_root/'
@@ -37,18 +37,33 @@ def get_samplers(num_train, valid_size):
 # ----- Data Transformations -----
 
 def data_transformations(dataset):
-    if dataset in ['CIFAR10']:
+    if dataset in ['CIFAR10', 'Imagenette', 'ImageNet32', 'ImageNet64']:
+        res = args.img_resize if args.img_resize is not None else 32
+
         train_transform = transforms.Compose([
+            transforms.Resize((res, res)),
             transforms.RandomHorizontalFlip(),
-            transforms.Pad(int(math.ceil(32 * 0.05)), padding_mode='edge'),
+            transforms.Pad(int(math.ceil(res * 0.05)), padding_mode='edge'),
             transforms.RandomAffine(degrees=0, translate=(0.05, 0.05)),
-            transforms.CenterCrop(32),
+            transforms.CenterCrop(res),
             transforms.ToTensor()
         ])
 
         valid_transform = transforms.Compose([
+            transforms.Resize((res, res)),
             transforms.ToTensor()
         ])
+
+    elif dataset in ['CelebA']:
+        Crop = transforms.Lambda(lambda x: transforms.functional.crop(x, 40, 15, 148, 148))
+        res = args.resolution
+
+        train_transform = valid_transform = transforms.Compose([
+            Crop,
+            transforms.Resize((res, res)),
+            transforms.ToTensor()
+        ])
+
     else:
         raise NotImplementedError
 

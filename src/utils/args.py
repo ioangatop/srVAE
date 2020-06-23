@@ -10,8 +10,8 @@ def parser():
     PARSER.add_argument('--dataset', default='CIFAR10', type=str,
                         choices=['CIFAR10', 'CelebA', 'Imagenette', 'ImageNet32', 'ImageNet64'],
                         help="Data to be used.")
-    PARSER.add_argument('--img_resolution', default=32, type=int,
-                        help="Change image resolution (when possible).")
+    PARSER.add_argument('--img_resize', default=32, type=32,
+                        help='Change image resolution.')
 
     # Model
     PARSER.add_argument('--model', default='VAE', type=str,
@@ -36,11 +36,6 @@ def parser():
                         help="Type of likelihood.")
     PARSER.add_argument('--iw_test', default=512, type=int,
                         help="Number of Importance Weighting samples used for approximating the test log-likelihood.")
-
-    # Data Transformation
-    PARSER.add_argument('--img_resize', default=None,
-                        help='Image resize dimentions. \
-                             "None" for original shape.')
 
     # Training Parameters
     PARSER.add_argument('--batch_size', default=64, type=int,
