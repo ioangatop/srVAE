@@ -40,10 +40,10 @@ We present empirically that the proposed approach performs comparably to VAEs in
 <center>
 
 
-| **Model**  |   **nll**   |     **FID**     |
-| :---   |  :---:  |    :---:    |
-| VAE    |  3.51   |    37.25 (41.36)    |
-| srVAE  |  3.65   |    29.95 (34.71)    |
+| **Model**  |   **nll**   |
+| :---   |  :---:  |
+| VAE    |  3.51   |
+| srVAE  |  3.65   |
 
 Results on CIFAR-10. The log-likelihood value *nll* was estimated using 500 weighted samples on the test set (10k images), 
 and we provide FID scores obtained on the training set (50k generated images and 50k real images) and on the test set (10k generated images and 10k real images; scores in brackets).
